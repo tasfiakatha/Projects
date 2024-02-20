@@ -16,6 +16,7 @@ ORDER BY location, date;
 
 -- What is the probability of dying from Covid-19?
 -- Total Deaths as % of Total Cases
+
 SELECT location, date, total_cases, total_deaths, (total_deaths/total_cases)*100 AS total_deaths_perc
 FROM PortfolioProject.dbo.CovidDeaths
 WHERE continent IS NOT NULL
@@ -23,6 +24,7 @@ ORDER BY location, date;
 
 
 -- Total Deaths as % of Total Cases in United States
+
 SELECT location, date, total_cases, total_deaths, (total_deaths/total_cases)*100 AS total_deaths_perc
 FROM PortfolioProject.dbo.CovidDeaths
 WHERE location = 'United States'
@@ -31,6 +33,7 @@ ORDER BY location, date;
 
 -- What percentage of the population got infected with Covid-19?
 -- Total Cases as % of Total Population
+
 SELECT location, date, total_cases, population, (total_cases/population)*100 AS total_cases_perc
 FROM PortfolioProject.dbo.CovidDeaths
 WHERE continent IS NOT NULL
@@ -38,6 +41,7 @@ ORDER BY total_cases_perc desc;
 
 
 -- Total Cases as % of Total Population in United States
+
 SELECT location, date, total_cases, population, (total_cases/population)*100 AS total_cases_perc
 FROM PortfolioProject.dbo.CovidDeaths
 WHERE location = 'United States'
@@ -45,6 +49,7 @@ ORDER BY location, date;
 
 
 -- Countries with highest infection rate 
+
 SELECT location, population, MAX(total_cases) AS HighestTotalCase, (MAX(total_cases)/population)*100 AS HighestTotalCasePerc
 FROM PortfolioProject.dbo.CovidDeaths
 WHERE continent IS NOT NULL
@@ -53,6 +58,7 @@ ORDER BY HighestTotalCasePerc DESC;
 
 
 --Countries with highest death count per population
+
 SELECT location, MAX(CAST(total_deaths AS int)) AS HighestTotalDeath
 FROM PortfolioProject.dbo.CovidDeaths
 WHERE continent IS NOT NULL
@@ -61,6 +67,7 @@ ORDER BY HighestTotalDeath DESC;
 
 
 --Continents with highest death count per population
+
 SELECT continent, MAX(CAST(total_deaths AS int)) AS HighestTotalDeath
 FROM PortfolioProject.dbo.CovidDeaths
 WHERE continent IS NOT NULL
@@ -69,6 +76,7 @@ ORDER BY HighestTotalDeath DESC;
 
 
 -- Global death percentage 
+
 SELECT date, SUM(new_cases) AS TotalCases, SUM(CAST(new_deaths AS int)) AS TotalDeaths, (SUM(CAST(new_deaths AS int)))/(SUM(new_cases))*100 AS DeathPercentage
 FROM PortfolioProject.dbo.CovidDeaths
 WHERE continent IS NOT NULL
@@ -96,6 +104,7 @@ FROM PopVsVacc;
 
 
 -- TEMP Table
+
 DROP TABLE IF EXISTS #PercPopulationVaccinated
 CREATE TABLE #PercPopulationVaccinated
 (
@@ -122,6 +131,7 @@ ORDER BY location, date;
 
 
 -- Create view to store data for later visualizations
+
 CREATE VIEW PercPopulationVaccinated AS
 SELECT cd.continent, cd.location, cd.date, population, new_vaccinations, 
   SUM(CONVERT(int, new_vaccinations)) OVER (PARTITION BY cd.location ORDER BY cd.location, cd.date) AS CumulativeDailyVacc
