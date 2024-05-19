@@ -5,6 +5,11 @@
 ## Authors
 [@tasfiakatha](https://github.com/tasfiakatha)
 
+## Table of Contents
+- [Business problem statement](https://github.com/tasfiakatha/Should-this-loan-be-approved-or-denied-/edit/main/README.md#business-problem-statement)
+- [Data source](https://github.com/tasfiakatha/Should-this-loan-be-approved-or-denied-/edit/main/README.md#data-source)
+- [Methods](https://github.com/tasfiakatha/Should-this-loan-be-approved-or-denied-/edit/main/README.md#methods)
+
 ## Business problem statement
 Small businesses are the backbone of the U.S. economy, driving job creation and innovation. The U.S. Small Business Administration (SBA) plays a vital role in supporting these businesses by providing loan guarantees. However, approving these loans can be a complex process, requiring lenders to balance the need to support small businesses with the risk of default.
 
@@ -18,4 +23,14 @@ This approach offers several potential benefits:
 
 ## Data source
 - [Small Business Administration (SBA) loan approval dataset](https://www.kaggle.com/datasets/mirbektoktogaraev/should-this-loan-be-approved-or-denied)
+
+## Methods
+- Exploratory data analysis
+- Feature engineering
+- Categorical encoding
+- Feature scaling
+- Model training
+- Model evaluation and selection
+- Hyperparameter tuning
+- Model interpretation (feature importance and shapley values)
 
